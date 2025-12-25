@@ -9,10 +9,16 @@ import './Hero.css';
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState('ai-advisor');
+
+  // AI Advisor state
+  const [advisorStep, setAdvisorStep] = useState(0);
+  const [nickname, setNickname] = useState('');
   const [skinType, setSkinType] = useState('');
   const [concerns, setConcerns] = useState('');
   const [goals, setGoals] = useState('');
   const [aboutYourself, setAboutYourself] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [recommendation, setRecommendation] = useState(null);
 
   const tabs = [
     { id: 'ai-advisor', label: 'AI Advisor' },
@@ -46,15 +52,113 @@ const Hero = () => {
     'Calming & Soothing'
   ];
 
-  const handleAIAdvisorSubmit = () => {
-    // This will be connected to your AI backend
-    console.log({
-      skinType,
-      concerns,
-      goals,
-      aboutYourself
-    });
-    // Navigate to results or show modal with recommendations
+  const systemPrompt = `Identity: You are TimeMachine Contour, the Official AI Advisor for REVEOULE. Your mission is to help users achieve their healthiest, most radiant skin through science-backed advice, personalized product recommendations, and expert-level skincare education. You bridge the gap between clinical expertise and a luxury boutique experience.
+
+Tone & Personality:
+
+    Sophisticated yet Accessible: Use professional terminology (e.g., "transepidermal water loss," "sebum production") but explain it simply.
+
+    Skin-Positive: Never shame a user for their skin concerns. Focus on "skin health" and "confidence" rather than "perfection."
+
+    Empathetic: Acknowledge that skin issues can be frustrating and personal.
+
+    Transparent: If a concern sounds like a medical condition (like cystic acne or suspicious moles), always recommend consulting a dermatologist.
+
+Knowledge Domains:
+
+    Ingredients: Deep knowledge of actives (Retinol, Vitamin C, AHAs/BHAs, Hyaluronic Acid, Niacinamide, Peptides).
+
+    Skin Types: Identifying and treating Oily, Dry, Combination, Sensitive, and Mature skin.
+
+    The REVEOULE Catalog: (In practice, you will prioritize REVEOULE products when suggesting routines).
+
+    Lifestyle Factors: How sleep, hydration, diet, and UV exposure affect the "TimeMachine" (aging) process.
+
+Interaction Guidelines:
+
+    The Consultation Phase: Before giving a full routine, ask clarifying questions about the user's skin type, current concerns (e.g., fine lines, texture, breakouts), and any known sensitivities.
+
+    The "Routine Builder" Format: When suggesting products, organize them by:
+
+        Cleanse
+
+        Treat (Serums/Actives)
+
+        Moisturize
+
+        Protect (SPF)
+
+    Expert Tips: Always include a "Pro-Tip" regarding application (e.g., "Apply hyaluronic acid to damp skin for maximum absorption").
+
+Constraints:
+
+    Always emphasize the importance of daily SPF.
+
+    Discourage "cocktailing" too many harsh actives (like mixing Retinol with high-strength Vitamin C) in the same session.
+
+    Stay true to the REVEOULE brand voice: elegant, efficient, and timeless.`;
+
+  const handleNicknameSubmit = () => {
+    if (nickname.trim()) {
+      setAdvisorStep(1);
+    }
+  };
+
+  const handleSkinTypeSelect = (type) => {
+    setSkinType(type);
+    setTimeout(() => setAdvisorStep(2), 300);
+  };
+
+  const handleConcernSelect = (concern) => {
+    setConcerns(concern);
+    setTimeout(() => setAdvisorStep(3), 300);
+  };
+
+  const handleGoalSelect = (goal) => {
+    setGoals(goal);
+    setTimeout(() => setAdvisorStep(4), 300);
+  };
+
+  const handleAIAdvisorSubmit = async () => {
+    setIsLoading(true);
+
+    // Build the structured prompt
+    const userPrompt = `My name is ${nickname}. My skin type is ${skinType}. My primary concern is ${concerns}. My skincare goal is ${goals}. ${aboutYourself ? `Additional information: ${aboutYourself}` : ''}`;
+
+    try {
+      const encodedPrompt = encodeURIComponent(userPrompt);
+      const encodedSystem = encodeURIComponent(systemPrompt);
+
+      const url = `https://gen.pollinations.ai/text/${encodedPrompt}?model=gemini&seed=-9007199254740991&system=${encodedSystem}&json=false&temperature=1&stream=false&private=true&key=sk_eAD9ea8AUrzEZlDVgwiwMWTK03mqt1FA`;
+
+      const response = await fetch(url);
+      const aiResponse = await response.text();
+
+      setRecommendation(aiResponse);
+      setAdvisorStep(5); // Show results
+    } catch (error) {
+      console.error('Error getting AI recommendation:', error);
+      setRecommendation('Sorry, we encountered an error. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const resetAdvisor = () => {
+    setAdvisorStep(0);
+    setNickname('');
+    setSkinType('');
+    setConcerns('');
+    setGoals('');
+    setAboutYourself('');
+    setRecommendation(null);
+  };
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    if (tabId === 'ai-advisor') {
+      resetAdvisor();
+    }
   };
 
   return (
@@ -90,7 +194,7 @@ const Hero = () => {
               <button
                 key={tab.id}
                 className={`hero__tab ${activeTab === tab.id ? 'hero__tab--active' : ''}`}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
               >
                 {tab.label}
               </button>
@@ -116,82 +220,202 @@ const Hero = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="hero__advisor">
-                    <div className="hero__advisor-options">
-                      {/* Skin Type Selection */}
-                      <div className="hero__option-group">
-                        <label className="hero__option-label">Skin Type</label>
-                        <div className="hero__option-buttons">
-                          {skinTypes.map((type) => (
+                    <AnimatePresence mode="wait">
+                      {/* Step 0: Nickname */}
+                      {advisorStep === 0 && (
+                        <motion.div
+                          key="step-0"
+                          className="hero__advisor-step"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="hero__option-group">
+                            <label className="hero__option-label">What should we call you?</label>
+                            <input
+                              type="text"
+                              className="hero__text-input"
+                              placeholder="Your nickname"
+                              value={nickname}
+                              onChange={(e) => setNickname(e.target.value)}
+                              onKeyPress={(e) => e.key === 'Enter' && handleNicknameSubmit()}
+                            />
                             <button
-                              key={type}
-                              className={`hero__option-btn ${skinType === type ? 'hero__option-btn--selected' : ''}`}
-                              onClick={() => setSkinType(type)}
+                              className="hero__submit-btn"
+                              onClick={handleNicknameSubmit}
+                              disabled={!nickname.trim()}
                             >
-                              {type}
+                              Continue
                             </button>
-                          ))}
-                        </div>
-                      </div>
+                          </div>
 
-                      {/* Skin Concerns */}
-                      <div className="hero__option-group">
-                        <label className="hero__option-label">Primary Concern</label>
-                        <div className="hero__option-buttons">
-                          {skinConcerns.map((concern) => (
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 1: Skin Type */}
+                      {advisorStep === 1 && (
+                        <motion.div
+                          key="step-1"
+                          className="hero__advisor-step"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="hero__option-group">
+                            <label className="hero__option-label">What's your skin type, {nickname}?</label>
+                            <div className="hero__option-buttons">
+                              {skinTypes.map((type) => (
+                                <button
+                                  key={type}
+                                  className={`hero__option-btn ${skinType === type ? 'hero__option-btn--selected' : ''}`}
+                                  onClick={() => handleSkinTypeSelect(type)}
+                                >
+                                  {type}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 2: Primary Concern */}
+                      {advisorStep === 2 && (
+                        <motion.div
+                          key="step-2"
+                          className="hero__advisor-step"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="hero__option-group">
+                            <label className="hero__option-label">What's your primary skin concern?</label>
+                            <div className="hero__option-buttons">
+                              {skinConcerns.map((concern) => (
+                                <button
+                                  key={concern}
+                                  className={`hero__option-btn ${concerns === concern ? 'hero__option-btn--selected' : ''}`}
+                                  onClick={() => handleConcernSelect(concern)}
+                                >
+                                  {concern}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 3: Skincare Goal */}
+                      {advisorStep === 3 && (
+                        <motion.div
+                          key="step-3"
+                          className="hero__advisor-step"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="hero__option-group">
+                            <label className="hero__option-label">What's your main skincare goal?</label>
+                            <div className="hero__option-buttons">
+                              {skinGoals.map((goal) => (
+                                <button
+                                  key={goal}
+                                  className={`hero__option-btn ${goals === goal ? 'hero__option-btn--selected' : ''}`}
+                                  onClick={() => handleGoalSelect(goal)}
+                                >
+                                  {goal}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Step 4: Tell About Yourself */}
+                      {advisorStep === 4 && (
+                        <motion.div
+                          key="step-4"
+                          className="hero__advisor-step"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="hero__option-group">
+                            <label className="hero__option-label">Tell us more about yourself (optional)</label>
+                            <textarea
+                              className="hero__textarea"
+                              placeholder="Share any additional details about your skin, lifestyle, or specific concerns..."
+                              value={aboutYourself}
+                              onChange={(e) => setAboutYourself(e.target.value)}
+                              rows="4"
+                            />
                             <button
-                              key={concern}
-                              className={`hero__option-btn ${concerns === concern ? 'hero__option-btn--selected' : ''}`}
-                              onClick={() => setConcerns(concern)}
+                              className="hero__submit-btn"
+                              onClick={handleAIAdvisorSubmit}
+                              disabled={isLoading}
                             >
-                              {concern}
+                              {isLoading ? 'Analyzing...' : 'Get AI Recommendations'}
                             </button>
-                          ))}
-                        </div>
-                      </div>
+                          </div>
 
-                      {/* Skin Goals */}
-                      <div className="hero__option-group">
-                        <label className="hero__option-label">Skincare Goal</label>
-                        <div className="hero__option-buttons">
-                          {skinGoals.map((goal) => (
-                            <button
-                              key={goal}
-                              className={`hero__option-btn ${goals === goal ? 'hero__option-btn--selected' : ''}`}
-                              onClick={() => setGoals(goal)}
-                            >
-                              {goal}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
 
-                      {/* Tell About Yourself */}
-                      <div className="hero__option-group">
-                        <label className="hero__option-label">Tell about yourself</label>
-                        <textarea
-                          className="hero__textarea"
-                          placeholder="Share any additional details about your skin, lifestyle, or specific concerns..."
-                          value={aboutYourself}
-                          onChange={(e) => setAboutYourself(e.target.value)}
-                          rows="4"
-                        />
-                      </div>
+                      {/* Step 5: Results */}
+                      {advisorStep === 5 && recommendation && (
+                        <motion.div
+                          key="step-5"
+                          className="hero__advisor-step hero__advisor-results"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <h3 className="hero__results-title">Your Personalized Skincare Recommendation</h3>
+                          <div className="hero__results-content">
+                            <p>{recommendation}</p>
+                          </div>
+                          <button
+                            className="hero__submit-btn hero__submit-btn--secondary"
+                            onClick={resetAdvisor}
+                          >
+                            Start Over
+                          </button>
 
-                      {/* Submit Button */}
-                      <button
-                        className="hero__submit-btn"
-                        onClick={handleAIAdvisorSubmit}
-                        disabled={!skinType || !concerns || !goals}
-                      >
-                        Get AI Recommendations
-                      </button>
-                    </div>
-
-                    {/* Powered by TimeMachine */}
-                    <div className="hero__branding">
-                      <span className="hero__branding-text">Powered by</span>
-                      <span className="hero__branding-logo">TimeMachine</span>
-                    </div>
+                          <div className="hero__branding">
+                            <span className="hero__branding-text">Powered by</span>
+                            <span className="hero__branding-logo">TimeMachine</span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               )}
