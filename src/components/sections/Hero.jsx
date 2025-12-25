@@ -129,7 +129,7 @@ Constraints:
       const encodedPrompt = encodeURIComponent(userPrompt);
       const encodedSystem = encodeURIComponent(systemPrompt);
 
-      const url = `https://gen.pollinations.ai/text/${encodedPrompt}?model=gemini&seed=-9007199254740991&system=${encodedSystem}&json=false&temperature=1&stream=false&private=true&key=sk_eAD9ea8AUrzEZlDVgwiwMWTK03mqt1FA`;
+      const url = `https://gen.pollinations.ai/text/${encodedPrompt}?model=gemini&system=${encodedSystem}&json=false&temperature=1&stream=false&private=true&key=sk_eAD9ea8AUrzEZlDVgwiwMWTK03mqt1FA`;
 
       const response = await fetch(url);
       const aiResponse = await response.text();
