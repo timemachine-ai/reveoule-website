@@ -49,6 +49,7 @@
   .hero__container {
     grid-template-columns: 1.2fr 1fr;
     gap: var(--spacing-lg);
+    align-items: center;
   }
 }
 
@@ -76,7 +77,8 @@
 
 /* Tabs - One Long Pill */
 .hero__tabs {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
