@@ -12,6 +12,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [snowfallEnabled, setSnowfallEnabled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -110,6 +111,15 @@ const Navigation = () => {
           <Link to="/affiliate" className="navigation__action-link">
             Become an Affiliate
           </Link>
+          <button
+            className={`navigation__snowfall-toggle ${snowfallEnabled ? 'navigation__snowfall-toggle--active' : ''}`}
+            onClick={() => setSnowfallEnabled(!snowfallEnabled)}
+            aria-label="Toggle snowfall"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5M2 12h20M7 7l5 5 5-5M7 17l5-5-5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
           <button className="navigation__globe">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
               <circle cx="10" cy="10" r="8" strokeWidth="1.5"/>
@@ -165,6 +175,24 @@ const Navigation = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Snowfall Effect */}
+      {snowfallEnabled && (
+        <div className="navigation__snowfall">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="navigation__snowflake"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+                opacity: 0.3 + Math.random() * 0.7
+              }}
+            />
+          ))}
+        </div>
+      )}
     </motion.nav>
   );
 };

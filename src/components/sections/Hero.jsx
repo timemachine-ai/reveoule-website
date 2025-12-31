@@ -180,7 +180,7 @@ Constraints:
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            A premium skincare solution that delivers trusted beauty
+            A <span className="hero__title-luxury">premium</span> skincare solution that delivers trusted beauty
           </motion.h1>
 
           {/* Tab Buttons */}
@@ -233,21 +233,26 @@ Constraints:
                         >
                           <div className="hero__option-group">
                             <label className="hero__option-label">What should we call you?</label>
-                            <input
-                              type="text"
-                              className="hero__text-input"
-                              placeholder="Your nickname"
-                              value={nickname}
-                              onChange={(e) => setNickname(e.target.value)}
-                              onKeyPress={(e) => e.key === 'Enter' && handleNicknameSubmit()}
-                            />
-                            <button
-                              className="hero__submit-btn"
-                              onClick={handleNicknameSubmit}
-                              disabled={!nickname.trim()}
-                            >
-                              Continue
-                            </button>
+                            <div className="hero__input-wrapper">
+                              <input
+                                type="text"
+                                className="hero__text-input"
+                                placeholder="Your nickname"
+                                value={nickname}
+                                onChange={(e) => setNickname(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && handleNicknameSubmit()}
+                              />
+                              <button
+                                className="hero__arrow-btn"
+                                onClick={handleNicknameSubmit}
+                                disabled={!nickname.trim()}
+                                aria-label="Continue"
+                              >
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
                           </div>
 
                           <div className="hero__branding">
@@ -365,20 +370,25 @@ Constraints:
                         >
                           <div className="hero__option-group">
                             <label className="hero__option-label">Tell us more about yourself (optional)</label>
-                            <textarea
-                              className="hero__textarea"
-                              placeholder="Share any additional details about your skin, lifestyle, or specific concerns..."
-                              value={aboutYourself}
-                              onChange={(e) => setAboutYourself(e.target.value)}
-                              rows="4"
-                            />
-                            <button
-                              className="hero__submit-btn"
-                              onClick={handleAIAdvisorSubmit}
-                              disabled={isLoading}
-                            >
-                              {isLoading ? 'Analyzing...' : 'Get AI Recommendations'}
-                            </button>
+                            <div className="hero__textarea-wrapper">
+                              <textarea
+                                className="hero__textarea"
+                                placeholder="Share any additional details about your skin, lifestyle, or specific concerns..."
+                                value={aboutYourself}
+                                onChange={(e) => setAboutYourself(e.target.value)}
+                                rows="3"
+                              />
+                              <button
+                                className="hero__arrow-btn hero__arrow-btn--textarea"
+                                onClick={handleAIAdvisorSubmit}
+                                disabled={isLoading}
+                                aria-label={isLoading ? 'Analyzing' : 'Get recommendations'}
+                              >
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
                           </div>
 
                           <div className="hero__branding">
@@ -512,28 +522,16 @@ Constraints:
           </motion.div>
         </motion.div>
 
-        {/* Visual Side - Images */}
+        {/* Visual Side - Single Square Image */}
         <motion.div
           className="hero__visual"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <div className="hero__visual-grid">
-            <div className="hero__visual-card hero__visual-card--1">
-              <div className="hero__visual-placeholder">
-                <span className="hero__visual-tag">Premium</span>
-              </div>
-            </div>
-            <div className="hero__visual-card hero__visual-card--2">
-              <div className="hero__visual-placeholder">
-                <span className="hero__visual-tag">Luxury</span>
-              </div>
-            </div>
-            <div className="hero__visual-card hero__visual-card--3">
-              <div className="hero__visual-placeholder">
-                <span className="hero__visual-tag">Elegance</span>
-              </div>
+          <div className="hero__visual-square">
+            <div className="hero__visual-placeholder">
+              <span className="hero__visual-tag">Premium Luxury</span>
             </div>
           </div>
         </motion.div>
