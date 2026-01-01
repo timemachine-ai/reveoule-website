@@ -12,7 +12,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-  const [snowfallEnabled, setSnowfallEnabled] = useState(false);
+  const [snowfallEnabled, setSnowfallEnabled] = useState(true);
   const location = useLocation();
 
   useEffect(() => {

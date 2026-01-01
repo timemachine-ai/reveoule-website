@@ -180,7 +180,7 @@ Constraints:
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            A <span className="hero__title-luxury">premium</span> skincare solution that delivers trusted beauty
+            Reveal The Secret To <span className="hero__title-luxury">Ageless</span> Beauty Today.
           </motion.h1>
 
           {/* Tab Buttons */}
@@ -518,7 +518,7 @@ Constraints:
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <span className="hero__brands-label">Trusted by beauty enthusiasts worldwide</span>
+            <span className="hero__brands-label">Your French beauty saloon at home</span>
           </motion.div>
         </motion.div>
 

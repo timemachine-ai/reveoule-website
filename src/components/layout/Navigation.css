@@ -353,14 +353,14 @@
 
 /* Snowfall Effect */
 .navigation__snowfall {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 60vh;
   pointer-events: none;
   overflow: hidden;
-  z-index: 1;
+  z-index: 999;
 }
 
 .navigation__snowflake {
@@ -378,6 +378,6 @@
     transform: translateY(0) translateX(0);
   }
   100% {
-    transform: translateY(80px) translateX(20px);
+    transform: translateY(60vh) translateX(30px);
   }
 }
