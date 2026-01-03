@@ -9,20 +9,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Navigation.css';
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  /* Removed isScrolled state and effect */
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [snowfallEnabled, setSnowfallEnabled] = useState(true);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -42,7 +33,7 @@ const Navigation = () => {
 
   return (
     <motion.nav
-      className={`navigation ${isScrolled ? 'navigation--scrolled' : ''}`}
+      className="navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -67,7 +58,7 @@ const Navigation = () => {
                   <button className="navigation__link navigation__link--dropdown">
                     {link.name}
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                      <path d="M6 8L2 4h8l-4 4z"/>
+                      <path d="M6 8L2 4h8l-4 4z" />
                     </svg>
                   </button>
                   <AnimatePresence>
@@ -95,9 +86,8 @@ const Navigation = () => {
               ) : (
                 <Link
                   to={link.path}
-                  className={`navigation__link ${
-                    location.pathname === link.path ? 'navigation__link--active' : ''
-                  }`}
+                  className={`navigation__link ${location.pathname === link.path ? 'navigation__link--active' : ''
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -109,7 +99,7 @@ const Navigation = () => {
         {/* Auth Buttons */}
         <div className="navigation__actions">
           <Link to="/affiliate" className="navigation__action-link">
-            Become an Affiliate
+            Become a freelancer
           </Link>
           <button
             className={`navigation__snowfall-toggle ${snowfallEnabled ? 'navigation__snowfall-toggle--active' : ''}`}
@@ -117,13 +107,13 @@ const Navigation = () => {
             aria-label="Toggle snowfall"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5M2 12h20M7 7l5 5 5-5M7 17l5-5-5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5M2 12h20M7 7l5 5 5-5M7 17l5-5-5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <button className="navigation__globe">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-              <circle cx="10" cy="10" r="8" strokeWidth="1.5"/>
-              <path d="M2 10h16M10 2a8 8 0 018 8 8 8 0 01-8 8" strokeWidth="1.5"/>
+              <circle cx="10" cy="10" r="8" strokeWidth="1.5" />
+              <path d="M2 10h16M10 2a8 8 0 018 8 8 8 0 01-8 8" strokeWidth="1.5" />
             </svg>
           </button>
           <Link to="/signin" className="navigation__signin">Sign in</Link>
@@ -163,9 +153,8 @@ const Navigation = () => {
                 >
                   <Link
                     to={link.path}
-                    className={`navigation__mobile-link ${
-                      location.pathname === link.path ? 'navigation__mobile-link--active' : ''
-                    }`}
+                    className={`navigation__mobile-link ${location.pathname === link.path ? 'navigation__mobile-link--active' : ''
+                      }`}
                   >
                     {link.name}
                   </Link>

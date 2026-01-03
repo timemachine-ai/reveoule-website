@@ -16,24 +16,20 @@
 .hero__background {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    var(--color-deep-crimson) 0%,
-    var(--color-dark-ruby) 50%,
-    var(--color-near-black) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-deep-crimson) 0%,
+      var(--color-dark-ruby) 50%,
+      var(--color-near-black) 100%);
   z-index: 0;
 }
 
 .hero__gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 30% 50%,
-    rgba(89, 9, 12, 0.8) 0%,
-    rgba(55, 5, 6, 0.9) 50%,
-    rgba(26, 2, 2, 1) 100%
-  );
+  background: radial-gradient(circle at 30% 50%,
+      rgba(89, 9, 12, 0.8) 0%,
+      rgba(55, 5, 6, 0.9) 50%,
+      rgba(26, 2, 2, 1) 100%);
 }
 
 .hero__container {
@@ -114,7 +110,12 @@
   background-color: var(--color-white);
   border-radius: 12px;
   padding: var(--spacing-md);
+  width: 100%;
   max-width: 500px;
+  /* Removed fixed height so Search/Affiliate can resize naturally */
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -124,20 +125,30 @@
 }
 
 .hero__tab-content {
-  min-height: auto;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* AI Advisor */
+/* AI Advisor - Fixed height specific to this tab */
 .hero__advisor {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 0;
+  /* No gap - completely compact */
+  height: 154px;
+  /* Reduced to eliminate white space */
 }
 
 .hero__advisor-step {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 0;
+  /* Remove all white space */
+  height: 100%;
 }
 
 .hero__advisor-options {
@@ -149,7 +160,8 @@
 .hero__option-group {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 8px;
+  /* Minimal gap */
 }
 
 .hero__option-label {
@@ -168,13 +180,15 @@
 
 .hero__option-btn {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 12px;
+  /* Much smaller */
   font-weight: 500;
   color: var(--color-near-black);
   background-color: var(--color-light-gray);
   border: 2px solid transparent;
-  border-radius: 8px;
-  padding: 10px 20px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  /* Much smaller padding */
   cursor: pointer;
   transition: all var(--transition-base);
 }
@@ -233,6 +247,10 @@
   cursor: pointer;
   transition: all var(--transition-base);
   color: var(--color-white);
+  z-index: 10;
+  /* Ensure it's above input */
+  pointer-events: auto;
+  /* Ensure it's clickable */
 }
 
 .hero__arrow-btn:hover:not(:disabled) {
@@ -315,8 +333,10 @@
 
 /* Results */
 .hero__advisor-results {
-  max-height: 600px;
+  flex: 1;
   overflow-y: auto;
+  min-height: 0;
+  /* Important for grid/flex nesting scroll */
 }
 
 .hero__results-title {
@@ -346,9 +366,13 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding-top: var(--spacing-md);
+  padding-top: 0;
+  /* No top padding */
+  padding-bottom: 4px;
+  /* Small bottom padding */
   border-top: 1px solid var(--color-light-gray);
-  margin-top: var(--spacing-sm);
+  margin-top: auto;
+  /* Push to bottom of the card */
 }
 
 .hero__branding-text {
@@ -556,26 +580,38 @@
 }
 
 .hero__visual-square {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform var(--transition-base);
+  width: 180%;
+  max-width: none;
+  height: 95%;
+  /* Reduced to prevent top cutoff */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: -250px;
+  margin-right: -100px;
+  margin-bottom: -60px;
+  /* No hover effect */
 }
 
-.hero__visual-square:hover {
-  transform: scale(1.02);
+.hero__model-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+  transform: scale(1.0);
+  /* Reduced from 1.15 to fit properly */
+  transform-origin: bottom center;
 }
+
+/* Removed hover effect */
 
 .hero__visual-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    var(--color-warm-beige) 0%,
-    var(--color-light-gray) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-warm-beige) 0%,
+      var(--color-light-gray) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -586,11 +622,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(89, 9, 12, 0.1) 0%,
-    rgba(55, 5, 6, 0.2) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(89, 9, 12, 0.1) 0%,
+      rgba(55, 5, 6, 0.2) 100%);
 }
 
 .hero__visual-tag {

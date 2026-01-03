@@ -46,7 +46,6 @@ const Hero = () => {
   const skinGoals = [
     'Anti-Aging',
     'Brightening',
-    'Deep Hydration',
     'Firming & Lifting',
     'Clarifying & Purifying',
     'Calming & Soothing'
@@ -249,7 +248,7 @@ Constraints:
                                 aria-label="Continue"
                               >
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                               </button>
                             </div>
@@ -385,7 +384,7 @@ Constraints:
                                 aria-label={isLoading ? 'Analyzing' : 'Get recommendations'}
                               >
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M5 10h10M12 7l3 3-3 3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                               </button>
                             </div>
@@ -443,8 +442,8 @@ Constraints:
                   <div className="hero__search">
                     <div className="hero__search-container">
                       <svg className="hero__search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <circle cx="11" cy="11" r="8" strokeWidth="2"/>
-                        <path d="m21 21-4.35-4.35" strokeWidth="2" strokeLinecap="round"/>
+                        <circle cx="11" cy="11" r="8" strokeWidth="2" />
+                        <path d="m21 21-4.35-4.35" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                       <input
                         type="text"
@@ -485,19 +484,19 @@ Constraints:
                       <div className="hero__affiliate-benefits">
                         <div className="hero__benefit">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                           <span>Up to 20% commission</span>
                         </div>
                         <div className="hero__benefit">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                           <span>Exclusive partner resources</span>
                         </div>
                         <div className="hero__benefit">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                           <span>Dedicated support team</span>
                         </div>
@@ -530,9 +529,11 @@ Constraints:
           transition={{ duration: 1, delay: 0.4 }}
         >
           <div className="hero__visual-square">
-            <div className="hero__visual-placeholder">
-              <span className="hero__visual-tag">Premium Luxury</span>
-            </div>
+            <img
+              src="/images/hero-model.png"
+              alt="Reveoule Model"
+              className="hero__model-image"
+            />
           </div>
         </motion.div>
       </div>
