@@ -741,7 +741,7 @@
 @media (max-width: 1024px) {
   .hero {
     min-height: auto;
-    padding: calc(var(--spacing-lg) + 90px + env(safe-area-inset-top, 0px)) 0 var(--spacing-lg);
+    padding: calc(var(--spacing-lg) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-lg);
   }
 
   .hero__title {
@@ -756,7 +756,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: calc(var(--spacing-md) + 90px + env(safe-area-inset-top, 0px)) 0 var(--spacing-md);
+    padding: calc(var(--spacing-md) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-md);
   }
 
   .hero__content {
@@ -792,7 +792,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding: calc(var(--spacing-sm) + 90px + env(safe-area-inset-top, 0px)) 0 var(--spacing-sm);
+    padding: calc(var(--spacing-sm) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-sm);
   }
 
   .hero__title {
