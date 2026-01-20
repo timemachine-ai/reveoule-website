@@ -285,13 +285,13 @@
   display: flex;
   align-items: center;
   max-width: 400px;
-  width: 100%;
   margin: 0 var(--spacing-sm);
 }
 
 @media (min-width: 768px) {
   .hero__input-wrapper {
     margin: 0;
+    width: 100%;
   }
 }
 
@@ -351,13 +351,13 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  width: 100%;
   margin: 0 var(--spacing-sm);
 }
 
 @media (min-width: 768px) {
   .hero__textarea-wrapper {
     margin: 0;
+    width: 100%;
   }
 }
 
