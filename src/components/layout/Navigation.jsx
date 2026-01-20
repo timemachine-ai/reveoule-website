@@ -33,7 +33,7 @@ const Navigation = () => {
     <>
       <motion.nav
         className="navigation"
-        initial={{ y: -100 }}
+        initial={{ y: -120 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
       >

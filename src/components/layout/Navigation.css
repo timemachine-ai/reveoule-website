@@ -11,6 +11,7 @@
   z-index: 1000;
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-light-gray);
+  padding-top: env(safe-area-inset-top);
 }
 
 .navigation__container {
