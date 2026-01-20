@@ -1,19 +1,19 @@
 /**
  * Navigation Component
- * Premium navigation bar with scroll behavior
+ * Fiverr Pro-inspired navigation bar with search
  */
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navigation.css';
 
 const Navigation = () => {
-  /* Removed isScrolled state and effect */
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-  const [snowfallEnabled, setSnowfallEnabled] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -31,6 +31,14 @@ const Navigation = () => {
     { name: 'AI Skin Advisor', path: '/skin-advisor' },
   ];
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
+  };
+
   return (
     <motion.nav
       className="navigation"
@@ -45,7 +53,22 @@ const Navigation = () => {
           <span className="navigation__logo-tagline">Skincare & Beauty</span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Search Bar */}
+        <form className="navigation__search" onSubmit={handleSearch}>
+          <svg className="navigation__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+            <circle cx="9" cy="9" r="7" strokeWidth="1.5" />
+            <path d="m14 14 5 5" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          <input
+            type="text"
+            className="navigation__search-input"
+            placeholder="Search for products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </form>
+
+        {/* Desktop Navigation Links */}
         <ul className="navigation__links">
           {navLinks.map((link) => (
             <li key={link.path} className="navigation__item">
@@ -98,18 +121,6 @@ const Navigation = () => {
 
         {/* Auth Buttons */}
         <div className="navigation__actions">
-          <Link to="/affiliate" className="navigation__action-link">
-            Become a freelancer
-          </Link>
-          <button
-            className={`navigation__snowfall-toggle ${snowfallEnabled ? 'navigation__snowfall-toggle--active' : ''}`}
-            onClick={() => setSnowfallEnabled(!snowfallEnabled)}
-            aria-label="Toggle snowfall"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M12 2v20M17 7l-5 5-5-5M7 17l5-5 5 5M2 12h20M7 7l5 5 5-5M7 17l5-5-5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
           <button className="navigation__globe">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
               <circle cx="10" cy="10" r="8" strokeWidth="1.5" />
@@ -142,6 +153,23 @@ const Navigation = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
           >
+            {/* Mobile Search */}
+            <form className="navigation__mobile-search" onSubmit={handleSearch}>
+              <input
+                type="text"
+                className="navigation__mobile-search-input"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="navigation__mobile-search-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                  <circle cx="9" cy="9" r="7" strokeWidth="1.5" />
+                  <path d="m14 14 5 5" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </button>
+            </form>
+
             <ul className="navigation__mobile-links">
               {navLinks.map((link) => (
                 <motion.li
@@ -161,27 +189,15 @@ const Navigation = () => {
                 </motion.li>
               ))}
             </ul>
+
+            {/* Mobile Auth Buttons */}
+            <div className="navigation__mobile-actions">
+              <Link to="/signin" className="navigation__mobile-signin">Sign in</Link>
+              <Link to="/join" className="navigation__mobile-join">Join</Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Snowfall Effect */}
-      {snowfallEnabled && (
-        <div className="navigation__snowfall">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="navigation__snowflake"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-                opacity: 0.3 + Math.random() * 0.7
-              }}
-            />
-          ))}
-        </div>
-      )}
     </motion.nav>
   );
 };

@@ -1,6 +1,6 @@
 /**
  * Navigation Component Styles
- * Luxury navigation with scroll behavior
+ * Fiverr Pro-inspired navigation with search
  */
 
 .navigation {
@@ -11,22 +11,16 @@
   z-index: 1000;
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-light-gray);
-  /* No resizing transition needed */
 }
-
-/* Removed .navigation--scrolled */
 
 .navigation__container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm);
+  gap: var(--spacing-md);
+  padding-top: 20px;
+  padding-bottom: 20px;
   max-width: 1400px;
-  /* Optional: widen container for generic look if needed, but 'container' class handles it */
 }
-
-/* Removed .navigation--scrolled .navigation__container */
 
 /* Logo */
 .navigation__logo {
@@ -34,6 +28,7 @@
   flex-direction: column;
   text-decoration: none;
   transition: transform var(--transition-base);
+  flex-shrink: 0;
 }
 
 .navigation__logo:hover {
@@ -60,6 +55,51 @@
   opacity: 0.7;
 }
 
+/* Search Bar */
+.navigation__search {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-light-gray);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 16px;
+  flex: 1;
+  max-width: 500px;
+  transition: all var(--transition-base);
+}
+
+@media (min-width: 1024px) {
+  .navigation__search {
+    display: flex;
+  }
+}
+
+.navigation__search:focus-within {
+  border-color: var(--color-deep-crimson);
+  background-color: var(--color-white);
+}
+
+.navigation__search-icon {
+  color: var(--color-near-black);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.navigation__search-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-near-black);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.navigation__search-input::placeholder {
+  color: rgba(26, 2, 2, 0.5);
+}
+
 /* Desktop Navigation Links */
 .navigation__links {
   display: none;
@@ -68,8 +108,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-right: auto;
-  margin-left: var(--spacing-xl);
 }
 
 @media (min-width: 1024px) {
@@ -167,50 +205,14 @@
 .navigation__actions {
   display: none;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
+  margin-left: auto;
 }
 
 @media (min-width: 1024px) {
   .navigation__actions {
     display: flex;
   }
-}
-
-.navigation__action-link {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-near-black);
-  text-decoration: none;
-  padding: 8px 0;
-  transition: color var(--transition-base);
-}
-
-.navigation__action-link:hover {
-  color: var(--color-deep-crimson);
-}
-
-.navigation__snowfall-toggle {
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-near-black);
-  transition: all var(--transition-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-
-.navigation__snowfall-toggle:hover {
-  color: var(--color-deep-crimson);
-  background-color: rgba(89, 9, 12, 0.05);
-}
-
-.navigation__snowfall-toggle--active {
-  color: var(--color-white);
-  background-color: var(--color-deep-crimson);
 }
 
 .navigation__globe {
@@ -272,9 +274,10 @@
   padding: 0;
   z-index: 1001;
   transition: transform var(--transition-base);
+  margin-left: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navigation__toggle {
     display: none;
   }
@@ -345,34 +348,95 @@
   border-bottom: none;
 }
 
-/* Snowfall Effect */
-.navigation__snowfall {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60vh;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 999;
+/* Mobile Search */
+.navigation__mobile-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-light-gray);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  transition: all var(--transition-base);
 }
 
-.navigation__snowflake {
-  position: absolute;
-  top: -10px;
-  width: 3px;
-  height: 3px;
-  background-color: white;
-  border-radius: 50%;
-  animation: snowfall linear infinite;
+.navigation__mobile-search:focus-within {
+  border-color: var(--color-deep-crimson);
+  background-color: var(--color-white);
 }
 
-@keyframes snowfall {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
+.navigation__mobile-search-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-near-black);
+  background: none;
+  border: none;
+  outline: none;
+}
 
-  100% {
-    transform: translateY(60vh) translateX(30px);
-  }
+.navigation__mobile-search-input::placeholder {
+  color: rgba(26, 2, 2, 0.5);
+}
+
+.navigation__mobile-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-near-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-base);
+}
+
+.navigation__mobile-search-btn:hover {
+  color: var(--color-deep-crimson);
+}
+
+/* Mobile Actions */
+.navigation__mobile-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-light-gray);
+}
+
+.navigation__mobile-signin {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-near-black);
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 6px;
+  transition: all var(--transition-base);
+}
+
+.navigation__mobile-signin:hover {
+  border-color: var(--color-deep-crimson);
+  color: var(--color-deep-crimson);
+}
+
+.navigation__mobile-join {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-deep-crimson);
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 6px;
+  transition: all var(--transition-base);
+}
+
+.navigation__mobile-join:hover {
+  background-color: var(--color-dark-ruby);
 }
