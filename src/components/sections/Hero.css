@@ -222,11 +222,18 @@
   font-weight: 600;
   color: var(--color-near-black);
   letter-spacing: 0.02em;
+  padding: 0 var(--spacing-sm);
 }
 
 @media (min-width: 480px) {
   .hero__option-label {
     font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__option-label {
+    padding: 0;
   }
 }
 
@@ -279,12 +286,12 @@
   align-items: center;
   max-width: 400px;
   width: 100%;
-  padding: 0 var(--spacing-sm);
+  margin: 0 var(--spacing-sm);
 }
 
 @media (min-width: 768px) {
   .hero__input-wrapper {
-    padding: 0;
+    margin: 0;
   }
 }
 
@@ -345,12 +352,12 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  padding: 0 var(--spacing-sm);
+  margin: 0 var(--spacing-sm);
 }
 
 @media (min-width: 768px) {
   .hero__textarea-wrapper {
-    padding: 0;
+    margin: 0;
   }
 }
 

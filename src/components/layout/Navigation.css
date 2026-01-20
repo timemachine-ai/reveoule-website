@@ -107,7 +107,7 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 8px 0;
+  padding: 12px 0;
   position: relative;
   transition: color var(--transition-base);
 }
@@ -216,7 +216,7 @@
   font-weight: 500;
   color: var(--color-near-black);
   text-decoration: none;
-  padding: 8px var(--spacing-sm);
+  padding: 12px var(--spacing-sm);
   transition: color var(--transition-base);
 }
 

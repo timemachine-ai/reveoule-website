@@ -62,6 +62,23 @@ body {
   overflow-x: hidden;
 }
 
+/* App wrapper - account for fixed navbar */
+.app {
+  padding-top: 72px; /* Mobile navbar height */
+}
+
+@media (min-width: 768px) {
+  .app {
+    padding-top: 80px; /* Tablet navbar height */
+  }
+}
+
+@media (min-width: 1024px) {
+  .app {
+    padding-top: 84px; /* Desktop navbar height */
+  }
+}
+
 /* Typography Hierarchy */
 h1,
 h2,

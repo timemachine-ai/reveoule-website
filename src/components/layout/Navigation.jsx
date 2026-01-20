@@ -109,9 +109,11 @@ const Navigation = () => {
           {/* Auth Buttons */}
           <div className="navigation__actions">
             <button className="navigation__globe">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                <circle cx="10" cy="10" r="8" strokeWidth="1.5" />
-                <path d="M2 10h16M10 2a8 8 0 018 8 8 8 0 01-8 8" strokeWidth="1.5" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12C8 18 12 22 12 22C12 22 16 18 16 12C16 6 12 2 12 2C12 2 8 6 8 12Z" />
+                <path d="M21 15H3" />
+                <path d="M21 9H3" />
               </svg>
             </button>
             <Link to="/signin" className="navigation__signin">Sign in</Link>
