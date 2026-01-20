@@ -460,6 +460,8 @@
   gap: 6px;
   padding-top: 8px;
   padding-bottom: 0;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
   border-top: 1px solid var(--color-light-gray);
   margin-top: var(--spacing-sm);
 }
@@ -467,6 +469,8 @@
 @media (min-width: 768px) {
   .hero__branding {
     padding-top: 12px;
+    padding-left: 0;
+    padding-right: 0;
     margin-top: var(--spacing-md);
   }
 }

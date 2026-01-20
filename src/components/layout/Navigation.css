@@ -17,17 +17,16 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  padding-top: 28px;
-  padding-bottom: 28px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   max-width: 1400px;
   position: relative;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
   .navigation__container {
-    justify-content: center;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 }
 
