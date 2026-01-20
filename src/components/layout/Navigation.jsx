@@ -33,9 +33,10 @@ const Navigation = () => {
     <>
       <motion.nav
         className="navigation"
-        initial={{ y: -120 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+        style={{ willChange: 'transform, opacity' }}
       >
         <div className="navigation__container container">
           {/* Mobile Menu Toggle - Left side on mobile */}
