@@ -104,17 +104,17 @@ Constraints:
 
   const handleSkinTypeSelect = (type) => {
     setSkinType(type);
-    setTimeout(() => setAdvisorStep(2), 300);
+    setAdvisorStep(2);
   };
 
   const handleConcernSelect = (concern) => {
     setConcerns(concern);
-    setTimeout(() => setAdvisorStep(3), 300);
+    setAdvisorStep(3);
   };
 
   const handleGoalSelect = (goal) => {
     setGoals(goal);
-    setTimeout(() => setAdvisorStep(4), 300);
+    setAdvisorStep(4);
   };
 
   const handleAIAdvisorSubmit = async () => {

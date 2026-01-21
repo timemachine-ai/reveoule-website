@@ -43,6 +43,8 @@
   flex-direction: column;
   text-decoration: none;
   flex-shrink: 0;
+  cursor: default;
+  pointer-events: none;
 }
 
 @media (max-width: 1023px) {
