@@ -62,7 +62,7 @@ const About = () => {
               and timeless elegance. We create products that enhance not only your skin but also
               your daily ritual.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
