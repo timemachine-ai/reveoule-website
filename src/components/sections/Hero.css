@@ -663,7 +663,7 @@
   object-position: bottom center;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
   animation: fadeIn 0.6s ease-in-out;
-  margin-bottom: -80px;
+  margin-bottom: -1px;
 }
 
 /* Brands */
@@ -762,7 +762,7 @@
 @media (max-width: 1024px) {
   .hero {
     min-height: auto;
-    padding: calc(var(--spacing-lg) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-lg);
+    padding: calc(var(--spacing-lg) + 80px + env(safe-area-inset-top, 0px)) 0 0;
   }
 
   .hero__title {
@@ -777,7 +777,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: calc(var(--spacing-md) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-md);
+    padding: calc(var(--spacing-md) + 80px + env(safe-area-inset-top, 0px)) 0 0;
   }
 
   .hero__content {
@@ -813,7 +813,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding: calc(var(--spacing-sm) + 80px + env(safe-area-inset-top, 0px)) 0 var(--spacing-sm);
+    padding: calc(var(--spacing-sm) + 80px + env(safe-area-inset-top, 0px)) 0 0;
   }
 
   .hero__title {
