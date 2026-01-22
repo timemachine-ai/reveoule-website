@@ -637,10 +637,10 @@
 /* Mobile Model Image */
 .hero__mobile-visual {
   display: none;
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xs);
   margin-bottom: 0;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -656,8 +656,8 @@
 }
 
 .hero__mobile-model-image {
-  width: 120%;
-  max-width: 480px;
+  width: 135%;
+  max-width: 540px;
   height: auto;
   object-fit: contain;
   object-position: bottom center;
