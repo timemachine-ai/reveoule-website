@@ -638,32 +638,43 @@
 .hero__mobile-visual {
   display: none;
   margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 1023px) {
   .hero__mobile-visual {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
   }
 }
 
 .hero__mobile-model-image {
-  width: 100%;
+  width: 120%;
+  max-width: 480px;
   height: auto;
   object-fit: contain;
+  object-position: bottom center;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
   animation: fadeIn 0.6s ease-in-out;
+  margin-bottom: -20px;
 }
 
 /* Brands */
 .hero__brands {
   padding-top: var(--spacing-md);
+}
+
+@media (max-width: 1023px) {
+  .hero__brands {
+    display: none;
+  }
 }
 
 .hero__brands-label {
