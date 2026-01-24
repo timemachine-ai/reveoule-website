@@ -360,25 +360,31 @@ Constraints:
             {activeTab === 'search-product' && (
               <div className="hero__tab-content">
                 <div className="hero__search">
-                  <div className="hero__search-container">
-                    <svg className="hero__search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <circle cx="11" cy="11" r="8" strokeWidth="2" />
-                      <path d="m21 21-4.35-4.35" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                    <input
-                      type="text"
-                      className="hero__search-input"
-                      placeholder="Search for serums, moisturizers, cleansers..."
-                    />
-                    <button className="hero__search-btn">Search</button>
+                  <div className="hero__option-group">
+                    <label className="hero__option-label">Search for a product</label>
+                    <div className="hero__input-wrapper">
+                      <input
+                        type="text"
+                        className="hero__text-input"
+                        placeholder="Serums, moisturizers, cleansers..."
+                      />
+                      <button
+                        className="hero__arrow-btn"
+                        aria-label="Search"
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <circle cx="11" cy="11" r="7" strokeWidth="2" />
+                          <path d="m20 20-3.5-3.5" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
 
                   <div className="hero__search-suggestions">
                     <span className="hero__suggestion-label">Popular:</span>
-                    <button className="hero__suggestion">Hyaluronic Acid Serum</button>
+                    <button className="hero__suggestion">Hyaluronic</button>
                     <button className="hero__suggestion">Vitamin C</button>
                     <button className="hero__suggestion">Retinol</button>
-                    <button className="hero__suggestion">Anti-Aging</button>
                   </div>
                 </div>
               </div>
@@ -389,29 +395,26 @@ Constraints:
               <div className="hero__tab-content">
                 <div className="hero__affiliate">
                   <div className="hero__affiliate-content">
-                    <h3 className="hero__affiliate-title">Join Our Affiliate Program</h3>
-                    <p className="hero__affiliate-description">
-                      Partner with Rêveoulé and earn exclusive commissions by sharing our luxury skincare products.
-                    </p>
+                    <h3 className="hero__affiliate-title">Partner with Rêveoulé</h3>
 
                     <div className="hero__affiliate-benefits">
                       <div className="hero__benefit">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                           <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span>Up to 20% commission</span>
+                        <span>20% commission</span>
                       </div>
                       <div className="hero__benefit">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                           <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span>Exclusive partner resources</span>
+                        <span>Partner resources</span>
                       </div>
                       <div className="hero__benefit">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                           <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span>Dedicated support team</span>
+                        <span>Dedicated support</span>
                       </div>
                     </div>
 

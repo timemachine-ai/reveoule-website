@@ -71,39 +71,49 @@
   font-weight: 600;
 }
 
-/* Tabs - One Long Pill */
+/* Tabs - One Long Pill - Always Single Line */
 .hero__tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: fit-content;
+  max-width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
   padding: 4px;
   backdrop-filter: blur(10px);
-  gap: 4px;
+  gap: 2px;
 }
 
 @media (max-width: 480px) {
   .hero__tabs {
     width: 100%;
+    gap: 2px;
   }
 }
 
 .hero__tab {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   color: var(--color-white);
   background-color: transparent;
   border: none;
   border-radius: 50px;
-  padding: 8px 12px;
+  padding: 8px 8px;
   cursor: pointer;
   white-space: nowrap;
   flex: 1;
-  min-width: fit-content;
+  min-width: 0;
+  text-align: center;
   transition: all 0.3s ease;
+}
+
+@media (min-width: 360px) {
+  .hero__tab {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
 }
 
 @media (min-width: 480px) {
@@ -125,7 +135,7 @@
   color: var(--color-deep-crimson);
 }
 
-/* Card */
+/* Card - Fixed Height Based on AI Advisor */
 .hero__card {
   background-color: var(--color-white);
   border-radius: 12px;
@@ -136,17 +146,20 @@
   flex-direction: column;
   position: relative;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 165px;
 }
 
 @media (min-width: 480px) {
   .hero__card {
     padding: var(--spacing-md);
+    min-height: 175px;
   }
 }
 
 @media (min-width: 768px) {
   .hero__card {
     padding: var(--spacing-md) var(--spacing-lg);
+    min-height: 190px;
   }
 }
 
@@ -496,142 +509,160 @@
 .hero__search {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-md) 0;
-}
-
-.hero__search-container {
-  display: flex;
-  align-items: center;
   gap: var(--spacing-sm);
-  background-color: var(--color-light-gray);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  padding: var(--spacing-sm) var(--spacing-md);
-}
-
-.hero__search-container:focus-within {
-  border-color: var(--color-deep-crimson);
-  background-color: var(--color-white);
-}
-
-.hero__search-icon {
-  color: var(--color-near-black);
-  opacity: 0.5;
-  flex-shrink: 0;
-}
-
-.hero__search-input {
-  flex: 1;
-  font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--color-near-black);
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.hero__search-input::placeholder {
-  color: rgba(26, 2, 2, 0.5);
-}
-
-.hero__search-btn {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-white);
-  background-color: var(--color-deep-crimson);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  cursor: pointer;
 }
 
 .hero__search-suggestions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: 6px;
   flex-wrap: wrap;
+  padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .hero__search-suggestions {
+    padding: 0;
+  }
 }
 
 .hero__suggestion-label {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 500;
   color: rgba(26, 2, 2, 0.6);
 }
 
 .hero__suggestion {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   color: var(--color-deep-crimson);
   background-color: transparent;
   border: 1px solid var(--color-light-gray);
-  border-radius: 20px;
-  padding: 8px 16px;
+  border-radius: 12px;
+  padding: 4px 10px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Affiliate Program */
+.hero__suggestion:hover {
+  background-color: var(--color-light-gray);
+}
+
+@media (min-width: 480px) {
+  .hero__suggestion-label {
+    font-size: 12px;
+  }
+
+  .hero__suggestion {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+}
+
+/* Affiliate Program - Compact to match AI Advisor card height */
 .hero__affiliate {
-  padding: var(--spacing-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .hero__affiliate-content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  max-width: 600px;
+  gap: var(--spacing-xs);
 }
 
 .hero__affiliate-title {
-  font-family: var(--font-heading);
-  font-size: clamp(28px, 4vw, 36px);
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
-  color: var(--color-deep-crimson);
-  line-height: 1.2;
+  color: var(--color-near-black);
+  letter-spacing: 0.02em;
+  padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 480px) {
+  .hero__affiliate-title {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__affiliate-title {
+    padding: 0;
+  }
 }
 
 .hero__affiliate-description {
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--color-near-black);
+  display: none;
 }
 
 .hero__affiliate-benefits {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .hero__affiliate-benefits {
+    padding: 0;
+  }
 }
 
 .hero__benefit {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 4px;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 500;
   color: var(--color-near-black);
+  background-color: var(--color-light-gray);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+@media (min-width: 480px) {
+  .hero__benefit {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
 }
 
 .hero__benefit svg {
   color: var(--color-deep-crimson);
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .hero__affiliate-btn {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-white);
   background-color: var(--color-deep-crimson);
   border: none;
-  border-radius: 8px;
-  padding: 16px 32px;
+  border-radius: 6px;
+  padding: 10px 20px;
   cursor: pointer;
   align-self: flex-start;
+  margin: 0 var(--spacing-sm);
+  transition: all 0.2s ease;
+}
+
+.hero__affiliate-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(89, 9, 12, 0.3);
+}
+
+@media (min-width: 768px) {
+  .hero__affiliate-btn {
+    margin: 0;
+  }
 }
 
 /* Mobile Model Image */
