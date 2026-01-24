@@ -386,11 +386,6 @@ Constraints:
                     <button className="hero__suggestion">Vitamin C</button>
                     <button className="hero__suggestion">Retinol</button>
                   </div>
-
-                  <div className="hero__branding">
-                    <span className="hero__branding-text">Powered by</span>
-                    <span className="hero__branding-logo">TimeMachine</span>
-                  </div>
                 </div>
               </div>
             )}
@@ -424,11 +419,6 @@ Constraints:
                     </div>
 
                     <button className="hero__affiliate-btn">Apply Now</button>
-                  </div>
-
-                  <div className="hero__branding">
-                    <span className="hero__branding-text">Powered by</span>
-                    <span className="hero__branding-logo">TimeMachine</span>
                   </div>
                 </div>
               </div>
