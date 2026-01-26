@@ -1,18 +1,74 @@
+/**
+ * Plans Page Styles
+ * Hero-inspired luxury membership plans
+ */
+
 .plans-page {
   padding-top: 80px;
   min-height: 100vh;
+  background-color: var(--color-white);
 }
 
 .plans-hero {
-  padding: var(--spacing-xxl) 0;
-  background: linear-gradient(135deg, var(--color-warm-beige), var(--color-light-gray));
+  padding: var(--spacing-xxxl) 0;
+  background-color: var(--color-white);
   text-align: center;
 }
 
+.plans-hero > .container > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .plans-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 700;
+  color: var(--color-deep-crimson);
   margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.plans-hero p {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--color-near-black);
+  font-weight: 400;
+  font-style: italic;
 }
 
 .plans-content {
   padding: var(--spacing-xxl) 0;
+}
+
+.plans-content > .container > p {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  text-align: center;
+  color: var(--color-deep-crimson);
+  font-style: italic;
+  padding: var(--spacing-xxl);
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  color: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.25);
+}
+
+@media (max-width: 768px) {
+  .plans-hero {
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .plans-hero h1 {
+    font-size: clamp(36px, 8vw, 48px);
+  }
+
+  .plans-hero p {
+    font-size: 18px;
+  }
 }

@@ -1,6 +1,6 @@
 /**
  * Testimonials Section Styles
- * Medical-grade credible presentation
+ * Hero-inspired luxury testimonial presentation with royal red cards
  */
 
 .testimonials {
@@ -22,13 +22,13 @@
 }
 
 .testimonials__eyebrow {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
   display: block;
 }
 
@@ -42,11 +42,12 @@
 }
 
 .testimonials__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
-  opacity: 0.8;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Grid */
@@ -62,6 +63,33 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-md);
   }
+}
+
+/* Grid Item - Contains the Card */
+.testimonials__grid > div {
+  transition: transform 0.3s ease;
+}
+
+.testimonials__grid > div:hover {
+  transform: translateY(-8px);
+}
+
+/* Override Card Styles for Testimonials */
+.testimonials__grid .luxury-card--white {
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border: none;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  border-radius: 12px;
+  height: 100%;
+  transition: box-shadow 0.3s ease;
+}
+
+.testimonials__grid > div:hover .luxury-card--white {
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
 }
 
 /* Testimonial Card */
@@ -81,16 +109,16 @@
 .testimonial-card__quote-icon {
   width: 32px;
   height: 32px;
-  color: var(--color-deep-crimson);
-  opacity: 0.3;
+  color: var(--color-white);
+  opacity: 0.4;
 }
 
 .testimonial-card__content {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 16px;
   line-height: 1.75;
-  color: var(--color-near-black);
-  font-style: normal;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
   margin: 0;
   flex: 1;
 }
@@ -99,20 +127,20 @@
 .testimonial-card__results {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xs);
+  gap: 6px;
   padding: var(--spacing-md) 0;
-  border-top: 1px solid var(--color-light-gray);
-  border-bottom: 1px solid var(--color-light-gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .testimonial-card__result {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--color-deep-crimson);
-  background-color: rgba(89, 9, 12, 0.06);
-  padding: 6px 12px;
-  border-radius: 2px;
+  background-color: var(--color-white);
+  padding: 5px 10px;
+  border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -134,26 +162,31 @@
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
-  color: var(--color-near-black);
+  color: var(--color-white);
   font-style: normal;
 }
 
 .testimonial-card__title {
   font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--color-near-black);
-  opacity: 0.7;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Stats */
+/* Stats - Royal Red Gradient */
 .testimonials__stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
   padding: var(--spacing-xl);
-  background-color: var(--color-warm-beige);
-  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 50%,
+    var(--color-near-black) 100%
+  );
+  border-radius: 12px;
   margin-top: var(--spacing-xl);
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.25);
 }
 
 @media (min-width: 640px) {
@@ -174,17 +207,17 @@
   font-family: var(--font-heading);
   font-size: clamp(36px, 5vw, 48px);
   font-weight: 700;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   line-height: 1;
 }
 
 .testimonials__stat-label {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--color-near-black);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 /* Responsive adjustments */
@@ -194,7 +227,7 @@
   }
 
   .testimonials__description {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .testimonial-card__content {

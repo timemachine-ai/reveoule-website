@@ -1,5 +1,6 @@
 /**
  * About Page Styles
+ * Hero-inspired luxury brand presentation
  */
 
 .about-page {
@@ -9,11 +10,7 @@
 /* Hero Section */
 .about-hero {
   padding: calc(var(--spacing-xxxl) + 80px) 0 var(--spacing-xxxl);
-  background: linear-gradient(
-    135deg,
-    var(--color-white) 0%,
-    var(--color-warm-beige) 100%
-  );
+  background-color: var(--color-white);
   text-align: center;
 }
 
@@ -23,12 +20,12 @@
 }
 
 .about-hero__eyebrow {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   margin-bottom: var(--spacing-md);
   display: block;
 }
@@ -44,22 +41,23 @@
 
 .about-hero__subtitle {
   font-family: var(--font-heading);
-  font-size: clamp(24px, 4vw, 32px);
-  font-weight: 500;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 400;
   color: var(--color-near-black);
   margin-bottom: var(--spacing-lg);
   letter-spacing: -0.01em;
+  font-style: italic;
 }
 
 .about-hero__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
-  opacity: 0.8;
+  font-weight: 400;
 }
 
-/* Philosophy Section */
+/* Philosophy Section - Royal Red Card */
 .about-philosophy {
   padding: var(--spacing-xxxl) 0;
   background-color: var(--color-white);
@@ -68,24 +66,33 @@
 .about-philosophy__content {
   max-width: 900px;
   margin: 0 auto;
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border-radius: 12px;
+  padding: var(--spacing-xxl);
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.25);
 }
 
 .about-philosophy__title {
   font-family: var(--font-heading);
-  font-size: clamp(36px, 6vw, 56px);
+  font-size: clamp(36px, 6vw, 48px);
   font-weight: 600;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   margin-bottom: var(--spacing-lg);
   letter-spacing: -0.02em;
   text-align: center;
 }
 
 .about-philosophy__text {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 18px;
-  line-height: 1.75;
-  color: var(--color-near-black);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: var(--spacing-lg);
+  font-style: italic;
 }
 
 .about-philosophy__text:last-child {
@@ -95,7 +102,7 @@
 /* Values Section */
 .about-values {
   padding: var(--spacing-xxxl) 0;
-  background-color: var(--color-light-gray);
+  background-color: var(--color-white);
 }
 
 .about-values__header {
@@ -114,13 +121,31 @@
 .about-values__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 @media (min-width: 768px) {
   .about-values__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Value Cards - Royal Red */
+.about-values__grid .luxury-card--white {
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-values__grid .luxury-card--white:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
 }
 
 .about-value {
@@ -133,16 +158,15 @@
   font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 600;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   letter-spacing: -0.01em;
 }
 
 .about-value__description {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
-  color: var(--color-near-black);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* CTA Section */
@@ -167,12 +191,13 @@
 }
 
 .about-cta__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
   margin-bottom: var(--spacing-lg);
-  opacity: 0.8;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .about-cta__actions {
@@ -194,8 +219,16 @@
     padding: var(--spacing-xxl) 0;
   }
 
+  .about-philosophy__content {
+    padding: var(--spacing-lg);
+  }
+
   .about-philosophy__text {
     font-size: 16px;
+  }
+
+  .about-hero__description {
+    font-size: 18px;
   }
 
   .about-cta__actions {

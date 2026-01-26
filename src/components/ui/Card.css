@@ -29,6 +29,37 @@
   box-shadow: 0 2px 8px rgba(26, 2, 2, 0.04);
 }
 
+/* Variant: Crimson/Royal Red Background - Luxury Accent */
+.luxury-card--crimson {
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border: none;
+  color: var(--color-white);
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.25);
+}
+
+.luxury-card--crimson .luxury-card__title,
+.luxury-card--crimson h3,
+.luxury-card--crimson h4 {
+  color: var(--color-white);
+}
+
+.luxury-card--crimson .luxury-card__subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.luxury-card--crimson .luxury-card__content,
+.luxury-card--crimson p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.luxury-card--crimson .luxury-card__footer {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Hoverable state */
 .luxury-card--hoverable {
   cursor: pointer;

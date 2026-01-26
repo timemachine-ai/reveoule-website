@@ -1,11 +1,11 @@
 /**
  * Category Grid Section Styles
- * Luxury product category presentation
+ * Hero-inspired luxury category cards with royal red styling
  */
 
 .category-grid {
   padding: var(--spacing-xxxl) 0;
-  background-color: var(--color-light-gray);
+  background-color: var(--color-white);
 }
 
 .category-grid__container {
@@ -22,13 +22,13 @@
 }
 
 .category-grid__eyebrow {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
   display: block;
 }
 
@@ -42,11 +42,12 @@
 }
 
 .category-grid__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
-  opacity: 0.8;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Grid */
@@ -68,24 +69,37 @@
   }
 }
 
-/* Category Card */
+/* Category Card - Royal Red Gradient */
 .category-card {
   position: relative;
   display: block;
   min-height: 280px;
   padding: var(--spacing-lg);
-  border-radius: 4px;
+  border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
-  border: 1px solid var(--color-light-gray);
-  background-color: var(--color-white);
+  border: none;
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
+}
+
+/* Featured cards span multiple columns */
 .category-card--featured {
   background: linear-gradient(
     135deg,
-    var(--color-warm-beige) 0%,
-    var(--color-white) 100%
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 50%,
+    var(--color-near-black) 100%
   );
 }
 
@@ -103,8 +117,7 @@
   }
 }
 
-
-/* Background */
+/* Background decorative gradient overlay */
 .category-card__background {
   position: absolute;
   inset: 0;
@@ -115,10 +128,10 @@
 .category-card__gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(89, 9, 12, 0.05) 0%,
-    rgba(55, 5, 6, 0.08) 100%
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
   );
 }
 
@@ -142,7 +155,7 @@
   font-family: var(--font-heading);
   font-size: clamp(28px, 4vw, 36px);
   font-weight: 600;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin: 0;
@@ -150,34 +163,39 @@
 
 .category-card__count {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--color-near-black);
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .category-card__description {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
-  color: var(--color-near-black);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   flex: 1;
 }
 
-/* Arrow */
+/* Arrow Button */
 .category-card__arrow {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
-  background-color: var(--color-deep-crimson);
-  color: var(--color-white);
-  border-radius: 2px;
+  background-color: var(--color-white);
+  color: var(--color-deep-crimson);
+  border-radius: 50px;
   margin-top: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover .category-card__arrow {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive adjustments */
@@ -193,14 +211,20 @@
   }
 
   .category-grid__description {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .category-card {
-    min-height: 240px;
+    min-height: 220px;
+    padding: var(--spacing-md);
   }
 
   .category-card__name {
     font-size: clamp(24px, 5vw, 28px);
+  }
+
+  .category-card__arrow {
+    width: 40px;
+    height: 40px;
   }
 }

@@ -1,5 +1,6 @@
 /**
  * Skin Advisor Page Styles
+ * Hero-inspired luxury AI consultation experience
  */
 
 .skin-advisor-page {
@@ -9,11 +10,7 @@
 /* Hero Section */
 .skin-advisor-hero {
   padding: calc(var(--spacing-xxl) + 80px) 0 var(--spacing-xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-white) 0%,
-    var(--color-warm-beige) 100%
-  );
+  background-color: var(--color-white);
   text-align: center;
 }
 
@@ -23,13 +20,13 @@
 }
 
 .skin-advisor-hero__eyebrow {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
   display: block;
 }
 
@@ -43,11 +40,12 @@
 }
 
 .skin-advisor-hero__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
-  opacity: 0.8;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Information Section */
@@ -84,14 +82,26 @@
   }
 }
 
+/* Step Cards - Royal Red */
 .skin-advisor-info__step {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: var(--spacing-lg);
-  background-color: var(--color-light-gray);
-  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skin-advisor-info__step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
 }
 
 .skin-advisor-info__number {
@@ -100,9 +110,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-deep-crimson);
-  color: var(--color-white);
-  border-radius: 2px;
+  background-color: var(--color-white);
+  color: var(--color-deep-crimson);
+  border-radius: 50px;
   font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 700;
@@ -113,17 +123,16 @@
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 600;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   margin-bottom: var(--spacing-sm);
   letter-spacing: -0.01em;
 }
 
 .skin-advisor-info__step-text {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
-  color: var(--color-near-black);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Responsive adjustments */
@@ -133,10 +142,14 @@
   }
 
   .skin-advisor-hero__description {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .skin-advisor-info {
     padding: var(--spacing-xl) 0;
+  }
+
+  .skin-advisor-info__step {
+    padding: var(--spacing-md);
   }
 }

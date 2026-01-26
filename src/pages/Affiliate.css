@@ -1,28 +1,107 @@
+/**
+ * Affiliate Page Styles
+ * Hero-inspired luxury affiliate program
+ */
+
 .affiliate-page {
   padding-top: 80px;
   min-height: 100vh;
+  background-color: var(--color-white);
 }
 
 .affiliate-hero {
-  padding: var(--spacing-xxl) 0;
-  background: linear-gradient(135deg, var(--color-deep-crimson), var(--color-dark-ruby));
-  color: var(--color-white);
+  padding: var(--spacing-xxxl) 0;
+  background-color: var(--color-white);
   text-align: center;
 }
 
-.affiliate-hero h1 {
-  color: var(--color-white);
-  margin-bottom: var(--spacing-md);
+.affiliate-hero > .container > div {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+.affiliate-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 700;
+  color: var(--color-deep-crimson);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+.affiliate-hero > .container > div > p {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--color-near-black);
+  font-weight: 400;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Benefits Grid - Royal Red Cards */
 .affiliate-benefits {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
   margin: var(--spacing-xxl) 0;
 }
 
+@media (min-width: 768px) {
+  .affiliate-benefits {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefit {
+  padding: var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
+}
+
 .benefit h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
   color: var(--color-white);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.01em;
+}
+
+.benefit p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+  .affiliate-hero {
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .affiliate-hero h1 {
+    font-size: clamp(36px, 8vw, 48px);
+  }
+
+  .affiliate-hero > .container > div > p {
+    font-size: 18px;
+  }
+
+  .benefit {
+    padding: var(--spacing-md);
+  }
 }

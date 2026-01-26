@@ -3,7 +3,6 @@
  * Luxury product showcase with elegant presentation
  */
 
-import Card from '../ui/Card';
 import Button from '../ui/Button';
 import './FeaturedProducts.css';
 
@@ -50,8 +49,7 @@ const FeaturedProducts = () => {
           <span className="featured-products__eyebrow">Bestsellers</span>
           <h2 className="featured-products__title">Featured Collection</h2>
           <p className="featured-products__description">
-            Our most coveted formulations, meticulously crafted to deliver exceptional results.
-            Each product represents the pinnacle of skincare innovation and luxury.
+            Meticulously crafted formulations representing the pinnacle of skincare innovation.
           </p>
         </div>
 
@@ -61,36 +59,34 @@ const FeaturedProducts = () => {
               key={product.id}
               className="featured-products__item"
             >
-              <Card variant="white" hoverable>
-                <div className="product-card">
-                  <div className="product-card__image">
-                    <div className="product-card__image-placeholder">
-                      <span className="product-card__category">{product.category}</span>
-                    </div>
-                  </div>
-
-                  <div className="product-card__content">
-                    <div className="product-card__header">
-                      <h3 className="product-card__name">{product.name}</h3>
-                      <span className="product-card__price">{product.price}</span>
-                    </div>
-
-                    <p className="product-card__description">{product.description}</p>
-
-                    <div className="product-card__benefits">
-                      {product.benefits.map((benefit, index) => (
-                        <span key={index} className="product-card__benefit">
-                          {benefit}
-                        </span>
-                      ))}
-                    </div>
-
-                    <Button variant="secondary" size="small" className="product-card__button">
-                      View Details
-                    </Button>
+              <div className="product-card">
+                <div className="product-card__image">
+                  <div className="product-card__image-placeholder">
+                    <span className="product-card__category">{product.category}</span>
                   </div>
                 </div>
-              </Card>
+
+                <div className="product-card__content">
+                  <div className="product-card__header">
+                    <h3 className="product-card__name">{product.name}</h3>
+                    <span className="product-card__price">{product.price}</span>
+                  </div>
+
+                  <p className="product-card__description">{product.description}</p>
+
+                  <div className="product-card__benefits">
+                    {product.benefits.map((benefit, index) => (
+                      <span key={index} className="product-card__benefit">
+                        {benefit}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Button variant="secondary" size="small" className="product-card__button">
+                    View Details
+                  </Button>
+                </div>
+              </div>
             </div>
           ))}
         </div>

@@ -1,10 +1,14 @@
 /**
  * Footer Component Styles
- * Luxury footer with dark background
+ * Hero-inspired luxury footer with refined dark styling
  */
 
 .footer {
-  background-color: var(--color-near-black);
+  background: linear-gradient(
+    180deg,
+    var(--color-near-black) 0%,
+    #0d0101 100%
+  );
   color: var(--color-white);
   padding: var(--spacing-xxl) 0 0;
 }
@@ -42,7 +46,7 @@
 
 .footer__logo-text {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   color: var(--color-white);
   letter-spacing: -0.02em;
@@ -51,21 +55,23 @@
 }
 
 .footer__logo-tagline {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 500;
-  color: var(--color-warm-beige);
+  color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  opacity: 0.9;
 }
 
 .footer__description {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 16px;
   line-height: 1.65;
-  color: var(--color-warm-beige);
+  color: rgba(255, 255, 255, 0.7);
   max-width: 400px;
   margin: 0;
+  font-style: italic;
 }
 
 /* Social Links */
@@ -81,9 +87,19 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  color: var(--color-warm-beige);
-  background-color: rgba(229, 222, 214, 0.1);
-  border-radius: 2px;
+  color: var(--color-white);
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer__social-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(89, 9, 12, 0.4);
 }
 
 /* Links Grid */
@@ -125,14 +141,19 @@
 .footer__link {
   font-family: var(--font-body);
   font-size: 15px;
-  color: var(--color-warm-beige);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.footer__link:hover {
+  color: var(--color-white);
 }
 
 /* Bottom Bar */
 .footer__bottom {
-  border-top: 1px solid rgba(229, 222, 214, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: var(--spacing-md) 0;
   margin-top: var(--spacing-xl);
 }
@@ -156,12 +177,12 @@
 .footer__crafted {
   font-family: var(--font-body);
   font-size: 14px;
-  color: var(--color-warm-beige);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 
 .footer__crafted {
+  font-family: var(--font-heading);
   font-style: italic;
 }
 
@@ -181,5 +202,10 @@
 
   .footer__links {
     gap: var(--spacing-md);
+  }
+
+  .footer__social-link {
+    width: 40px;
+    height: 40px;
   }
 }

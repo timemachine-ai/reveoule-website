@@ -1,6 +1,6 @@
 /**
  * Featured Products Section Styles
- * Luxury product showcase design
+ * Hero-inspired luxury product showcase with royal red cards
  */
 
 .featured-products {
@@ -22,13 +22,13 @@
 }
 
 .featured-products__eyebrow {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-deep-crimson);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
   display: block;
 }
 
@@ -42,11 +42,12 @@
 }
 
 .featured-products__description {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.6;
   color: var(--color-near-black);
-  opacity: 0.8;
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* Grid */
@@ -70,19 +71,40 @@
   }
 }
 
-/* Product Card */
+/* Product Card Item Wrapper */
+.featured-products__item {
+  transition: transform 0.3s ease;
+}
+
+.featured-products__item:hover {
+  transform: translateY(-8px);
+}
+
+/* Product Card - Royal Red Gradient Style */
 .product-card {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-crimson) 0%,
+    var(--color-dark-ruby) 100%
+  );
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(89, 9, 12, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.featured-products__item:hover .product-card {
+  box-shadow: 0 16px 48px rgba(89, 9, 12, 0.3);
 }
 
 .product-card__image {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  margin-bottom: var(--spacing-md);
-  border-radius: 2px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  position: relative;
 }
 
 .product-card__image-placeholder {
@@ -90,8 +112,8 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    var(--color-warm-beige) 0%,
-    var(--color-light-gray) 100%
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%
   );
   display: flex;
   align-items: center;
@@ -101,10 +123,12 @@
 
 .product-card__category {
   font-family: var(--font-heading);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-deep-crimson);
-  opacity: 0.3;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-white);
+  opacity: 0.4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .product-card__content {
@@ -112,55 +136,54 @@
   flex-direction: column;
   gap: var(--spacing-sm);
   flex: 1;
+  padding: var(--spacing-md);
 }
 
 .product-card__header {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-xs);
+  gap: 6px;
 }
 
 .product-card__name {
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 600;
-  color: var(--color-deep-crimson);
+  color: var(--color-white);
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
 
 .product-card__price {
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-near-black);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .product-card__description {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
-  color: var(--color-near-black);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: var(--spacing-xs);
 }
 
 .product-card__benefits {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
+  gap: 6px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .product-card__benefit {
   font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
   color: var(--color-deep-crimson);
-  background-color: rgba(89, 9, 12, 0.08);
-  padding: 6px 12px;
-  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 5px 10px;
+  border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -168,6 +191,18 @@
 .product-card__button {
   margin-top: auto;
   width: 100%;
+}
+
+/* Override button styles for crimson card context */
+.product-card .luxury-button--secondary {
+  background-color: var(--color-white);
+  color: var(--color-deep-crimson);
+  border-color: var(--color-white);
+  font-weight: 600;
+}
+
+.product-card .luxury-button--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* Footer */
@@ -189,10 +224,14 @@
   }
 
   .featured-products__description {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .product-card__name {
     font-size: 18px;
+  }
+
+  .product-card__content {
+    padding: var(--spacing-sm);
   }
 }
